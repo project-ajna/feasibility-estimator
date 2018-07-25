@@ -1,21 +1,32 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react"
+import "./styles/main.css"
+
+import WorldWind from "@nasaworldwind/worldwind"
 
 class App extends Component {
+  componentDidMount() {
+    let wwd = new WorldWind.WorldWindow("worldwind-canvas")
+
+    wwd.addLayer(new WorldWind.BMNGOneImageLayer())
+    wwd.addLayer(new WorldWind.BMNGLandsatLayer())
+
+    wwd.addLayer(new WorldWind.CompassLayer())
+    wwd.addLayer(new WorldWind.CoordinatesDisplayLayer(wwd))
+    wwd.addLayer(new WorldWind.ViewControlsLayer(wwd))
+  }
+
   render() {
+    console.log(WorldWind)
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className="">
+        <div className="">Ajna</div>
+        <canvas id="worldwind-canvas">
+          Your browser does not support HTML5 Canvas.
+        </canvas>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
