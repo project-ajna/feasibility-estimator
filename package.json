@@ -2,7 +2,7 @@
   "name": "ajna-ww",
   "version": "0.1.0",
   "private": true,
-  homepage: "https://jikkujose.gitlab.io/ajna-feasibility-estimator",
+  "homepage": "https://jikkujose.gitlab.io/ajna-feasibility-estimator",
   "dependencies": {
     "@nasaworldwind/worldwind": "^0.9.0",
     "react": "^16.4.1",
