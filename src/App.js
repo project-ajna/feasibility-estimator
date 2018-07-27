@@ -7,7 +7,10 @@ class App extends Component {
     return (
       <div className="bg-black h-screen">
         <Toolbar />
-        <WWViewer className="w-full h-full" />
+        <WWViewer
+          className="w-full m-0 border-orange border-1"
+          style={{ height: "calc(100% - 6.3rem)" }}
+        />
       </div>
     )
   }

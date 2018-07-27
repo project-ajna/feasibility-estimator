@@ -15,7 +15,7 @@ export class WWViewer extends React.Component {
 
   render() {
     return (
-      <canvas id="worldwind-canvas" className={this.props.className}>
+      <canvas id="worldwind-canvas" {...this.props}>
         Your browser does not support HTML5 Canvas.
       </canvas>
     )
