@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { WWViewer } from "./WWViewer"
+import { WorldWind } from "./WorldWind"
 import { Toolbar } from "./Toolbar"
 
 class App extends Component {
@@ -7,8 +7,8 @@ class App extends Component {
     return (
       <div className="bg-black h-screen">
         <Toolbar />
-        <WWViewer
-          className="w-full m-0 border-orange border-1"
+        <WorldWind
+          className="w-full"
           style={{ height: "calc(100% - 6.3rem)" }}
         />
       </div>
