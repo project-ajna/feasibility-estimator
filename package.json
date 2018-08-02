@@ -7,7 +7,8 @@
     "@nasaworldwind/worldwind": "^0.9.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "sprintf-js": "^1.1.1"
   },
   "scripts": {
     "prestart":
