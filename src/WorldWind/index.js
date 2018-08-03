@@ -1,9 +1,13 @@
 import React from "react"
 import WWObject from "@nasaworldwind/worldwind"
-import WorldWind from "@nasaworldwind/worldwind"
+//import WorldWind from "@nasaworldwind/worldwind"
 import { sprintf } from "sprintf-js"
 
 export class Globe extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
   componentDidMount() {
     let rect = document
       .getElementById("worldwind-canvas")
@@ -18,8 +22,18 @@ export class Globe extends React.Component {
     wwd.addLayer(new WWObject.CoordinatesDisplayLayer(wwd))
     wwd.addLayer(new WWObject.ViewControlsLayer(wwd))
 
+    let set = this.props.set
+    let update = this.props.update
+
     var handleClick = function(recognizer) {
       //var x = recognizer.clientX, y = recognizer.clientY
+
+      if(wwd.navigator.range > 2000000) {
+        set({error: true})
+        return
+      }
+
+      set({error: false})
 
       let p1 = wwd.pick([0, 35]).objects[0].position
       let p2 = wwd.pick([rect.width - 10, rect.height - 10]).objects[0].position
@@ -41,6 +55,8 @@ export class Globe extends React.Component {
 
         console.log(url)
 
+        this.set({loading: true})
+
         fetch(url, {
           mode: "cors",
           headers: {
@@ -48,18 +64,25 @@ export class Globe extends React.Component {
           }
         })
           .then(r => r.json())
-          .then(d => console.log(d))
+          .then(d => update(d))
     }
 
-    new WorldWind.ClickRecognizer(wwd, handleClick)
-    new WorldWind.TapRecognizer(wwd, handleClick)
+    this.props.setup(handleClick)
+
+    //new WorldWind.ClickRecognizer(wwd, handleClick)
+    //new WorldWind.TapRecognizer(wwd, handleClick)
   }
 
   render() {
+    let props = {...this.props}
+    delete props['setup']
+    delete props['update']
+    delete props['set']
+
     return (
-      <canvas id="worldwind-canvas" {...this.props}>
-        Your browser does not support HTML5 Canvas.
-      </canvas>
+        <canvas id="worldwind-canvas" {...props}>
+          Your browser does not support HTML5 Canvas.
+        </canvas>
     )
   }
 }

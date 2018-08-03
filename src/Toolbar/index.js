@@ -43,6 +43,12 @@ function Toolbar({
   loading = false,
   estimate,
 }) {
+  let area = results.area
+    ? Number(results.area).toLocaleString() + " sq. km"
+    : "NA"
+  let cover = results.cover ? results.cover + " %" : "NA"
+  let cost = results.cost ? "€ " + Number(results.cost).toLocaleString() : "NA"
+
   return (
     <div>
       <div className="h-24 px-5 bg-grey-lightest flex justify-between shadow items-center">
@@ -60,12 +66,12 @@ function Toolbar({
           <div className="flex">
             {results && (
               <div className="flex">
-                <DataDisplay label="Area" data="64,000 sq Kms" />
-                <DataDisplay label="Forest Cover" data="37%" />
-                <DataDisplay label="Cost" data="€ 1.8M" />
+                <DataDisplay label="Area" data={area} />
+                <DataDisplay label="Forest Cover" data={cover} />
+                <DataDisplay label="Cost" data={cost} />
               </div>
             )}
-            {loading && <Info>Loading..</Info>}
+            {loading && <Info>Loading...</Info>}
             {warningArea && (
               <Info>Area too large to estimate, please zoom in</Info>
             )}
