@@ -36,7 +36,7 @@ export class Home extends React.Component {
               satellite data & blockchain
             </div>
             <YouTube
-              videoId="jJzOabHOgmg"
+              videoId="q4kK2TsPAjc"
               opts={opts}
               onReady={this._onReady}
             />
