@@ -4,10 +4,6 @@ import WWObject from "@nasaworldwind/worldwind"
 import { sprintf } from "sprintf-js"
 
 export class Globe extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   componentDidMount() {
     let rect = document
       .getElementById("worldwind-canvas")
