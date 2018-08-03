@@ -30,11 +30,16 @@ export class Globe extends React.Component {
 
         let url = `https://worldwind25.arc.nasa.gov/wms?service=WMS&request=GetMap&version=1.3.0&transparent=TRUE&layers=BlueMarble-200405,esat&styles=&format=image/jpeg&width=${width}&height=${height}&crs=EPSG:4326&bbox=${bbox}`
 
+        url = `http://cors-anywhere.herokuapp.com/173.212.207.78:5000//forest-cover?width=${width}&height=${height}&bbox=${bbox}`
+
         console.log(url)
 
-        url = `/forest-cover?width=${width}&height=${height}&bbox=${bbox}`
-
-        fetch(url)
+        fetch(url, {
+          mode: "cors",
+          headers: {
+            "X-Requested-With": "XMLHttpRequest",
+          }
+        })
           .then(r => r.json())
           .then(d => console.log(d))
     }
