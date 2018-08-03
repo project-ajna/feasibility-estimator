@@ -21,6 +21,8 @@ export class Estimator extends React.Component {
       error: false,
       loading: false,
     }
+
+    console.log(estimate, update)
   }
 
   estimate = () => {
