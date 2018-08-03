@@ -37,13 +37,18 @@ export class Globe extends React.Component {
         width
       }&height=${height}&crs=EPSG:4326&bbox=${bbox}`
 
-      console.log(url)
+        url = `http://cors-anywhere.herokuapp.com/173.212.207.78:5000//forest-cover?width=${width}&height=${height}&bbox=${bbox}`
 
-      url = `/forest-cover?width=${width}&height=${height}&bbox=${bbox}`
+        console.log(url)
 
-      fetch(url)
-        .then(r => r.json())
-        .then(d => console.log(d))
+        fetch(url, {
+          mode: "cors",
+          headers: {
+            "X-Requested-With": "XMLHttpRequest",
+          }
+        })
+          .then(r => r.json())
+          .then(d => console.log(d))
     }
 
     new WorldWind.ClickRecognizer(wwd, handleClick)
