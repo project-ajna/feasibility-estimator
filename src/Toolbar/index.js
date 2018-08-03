@@ -44,7 +44,7 @@ export function Toolbar({
                 <DataDisplay label="RoI" data="250% in 3 years" />
               </div>
             )}
-            {loading && <Info>Loading..</Info>}
+            {loading && <Info>Loading...</Info>}
             {warningArea && (
               <Info>Area too large to estimate, please zoom in</Info>
             )}
