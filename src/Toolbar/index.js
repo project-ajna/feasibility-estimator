@@ -17,9 +17,9 @@ export function Toolbar({
   estimate,
 }) {
 
-  let area = results.area ? (Number(results.area).toLocaleString() + " sq. km") : ''
-  let cover = results.cover ? (results.cover + " %"): ''
-  let cost = results.cost ? ("€ " + Number(results.cost).toLocaleString()) : ''
+  let area = results.area ? (Number(results.area).toLocaleString() + " sq. km") : 'NA'
+  let cover = results.cover ? (results.cover + " %"): 'NA'
+  let cost = results.cost ? ("€ " + Number(results.cost).toLocaleString()) : 'NA'
 
   return (
     <div>
@@ -41,7 +41,6 @@ export function Toolbar({
                 <DataDisplay label="Area" data={area}/>
                 <DataDisplay label="Forest Cover" data={cover} />
                 <DataDisplay label="Cost" data={cost} />
-                <DataDisplay label="RoI" data="250% in 3 years" />
               </div>
             )}
             {loading && <Info>Loading...</Info>}
