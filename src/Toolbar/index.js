@@ -10,10 +10,38 @@ const Info = ({ children }) => (
   </div>
 )
 
-export function Toolbar({
+class Stater extends React.Component {
+  state = {
+    results: false,
+    warningArea: false,
+    loading: false,
+  }
+
+  estimate = () => {
+    this.setState(s => ({ loading: true, results: false }))
+
+    setTimeout(() => {
+      this.setState(s => ({ results: true, loading: false }))
+    }, 4000)
+  }
+
+  render() {
+    const { results, warningArea, loading } = this.state
+
+    return this.props.render({
+      results,
+      warningArea,
+      loading,
+      estimate: this.estimate,
+    })
+  }
+}
+
+function Toolbar({
   results = true,
   warningArea = false,
   loading = false,
+  estimate,
 }) {
   return (
     <div>
@@ -32,17 +60,19 @@ export function Toolbar({
           <div className="flex">
             {results && (
               <div className="flex">
-                <DataDisplay label="Area" data="123.12 sq. km" />
-                <DataDisplay label="Forest Cover" data="23%" />
-                <DataDisplay label="Cost" data="€ 23M" />
-                <DataDisplay label="RoI" data="250% in 3 years" />
+                <DataDisplay label="Area" data="64,000 sq Kms" />
+                <DataDisplay label="Forest Cover" data="37%" />
+                <DataDisplay label="Cost" data="€ 1.8M" />
               </div>
             )}
             {loading && <Info>Loading..</Info>}
             {warningArea && (
               <Info>Area too large to estimate, please zoom in</Info>
             )}
-            <div className="p-2 px-4 cursor-pointer bg-blue text-white ml-2 rounded flex justify-center items-center">
+            <div
+              onClick={estimate}
+              className="p-2 px-4 cursor-pointer bg-blue text-white ml-2 rounded flex justify-center items-center"
+            >
               Estimate
             </div>
           </div>
@@ -54,3 +84,7 @@ export function Toolbar({
     </div>
   )
 }
+
+export const TB = propsOriginal => (
+  <Stater render={props => <Toolbar {...props} {...propsOriginal} />} />
+)
