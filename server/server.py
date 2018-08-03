@@ -51,6 +51,9 @@ def get_forest_cover():
 
     area = (math.pi/180) * R * R * abs(math.sin(lat1) - math.sin(lat2)) * abs(lon1 - lon2)
 
+    if area < 1:
+        area = 1
+
     cost = area * 100
     
     url = "https://worldwind25.arc.nasa.gov/wms?service=WMS&request=GetMap&version=1.3.0&transparent=TRUE&layers=BlueMarble-200405,esat&styles=&format=image/jpeg&width=%d&height=%d&crs=EPSG:4326&bbox=%s" % (width, height, bbox)
