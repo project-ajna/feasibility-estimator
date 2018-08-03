@@ -8,7 +8,8 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "sprintf-js": "^1.1.1"
   },
   "scripts": {
     "prestart": "tailwind build ./src/styles/tailwind-includes.css -c ./tailwind-config.js -o ./src/styles/tailwind.css",
@@ -20,5 +21,6 @@
   },
   "devDependencies": {
     "tailwindcss": "^0.6.4"
-  }
+  },
+  "proxy": "http://localhost:5000"
 }
