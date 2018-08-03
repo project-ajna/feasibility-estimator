@@ -14,7 +14,13 @@ export function Toolbar({
   results = true,
   warningArea = false,
   loading = false,
+  estimate,
 }) {
+
+  let area = results.area ? (results.area + " sq. km") : ''
+  let cover = results.cover ? (results.cover + " %"): ''
+  let cost = results.cost ? ("€ " + results.cost) : ''
+
   return (
     <div>
       <div className="h-24 px-5 bg-grey-lightest flex justify-between shadow items-center">
@@ -32,9 +38,9 @@ export function Toolbar({
           <div className="flex">
             {results && (
               <div className="flex">
-                <DataDisplay label="Area" data="123.12 sq. km" />
-                <DataDisplay label="Forest Cover" data="23%" />
-                <DataDisplay label="Cost" data="€ 23M" />
+                <DataDisplay label="Area" data={area}/>
+                <DataDisplay label="Forest Cover" data={cover} />
+                <DataDisplay label="Cost" data={cost} />
                 <DataDisplay label="RoI" data="250% in 3 years" />
               </div>
             )}
@@ -42,7 +48,7 @@ export function Toolbar({
             {warningArea && (
               <Info>Area too large to estimate, please zoom in</Info>
             )}
-            <div className="p-2 px-4 cursor-pointer bg-blue text-white ml-2 rounded flex justify-center items-center">
+            <div className="p-2 px-4 cursor-pointer bg-blue text-white ml-2 rounded flex justify-center items-center" onClick={estimate}>
               Estimate
             </div>
           </div>
