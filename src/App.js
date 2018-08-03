@@ -2,8 +2,7 @@ import React, { Component } from "react"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 
 import { Estimator } from "./Estimator"
-
-const Home = () => <div className="w-8 h-8 bg-blue" />
+import { Home } from "./Home"
 
 const NotFound = () => <div className="w4 h4 bg-yellow" />
 
