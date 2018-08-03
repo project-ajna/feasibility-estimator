@@ -17,9 +17,9 @@ export function Toolbar({
   estimate,
 }) {
 
-  let area = results.area ? (results.area + " sq. km") : ''
+  let area = results.area ? (Number(results.area).toLocaleString() + " sq. km") : ''
   let cover = results.cover ? (results.cover + " %"): ''
-  let cost = results.cost ? ("€ " + results.cost) : ''
+  let cost = results.cost ? ("€ " + Number(results.cost).toLocaleString()) : ''
 
   return (
     <div>
