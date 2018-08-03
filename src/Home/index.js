@@ -59,7 +59,10 @@ export class Home extends React.Component {
           </Link>
         </div>
         <div className="w-full p-5 flex bg-black text-white font-mono text-xs">
-          <a className="mr-2 text-white no-underline font-bold" href="">
+          <a
+            className="mr-2 text-white no-underline font-bold"
+            href="https://github.com/project-ajna/feasibility-estimator"
+          >
             Github
           </a>{" "}
           |{" "}
