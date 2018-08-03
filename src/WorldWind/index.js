@@ -77,7 +77,7 @@ export class Globe extends React.Component {
     let props = {...this.props}
     delete props['setup']
     delete props['update']
-    delete props['error']
+    delete props['set']
 
     return (
         <canvas id="worldwind-canvas" {...props}>
