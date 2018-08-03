@@ -5,10 +5,6 @@ import { sprintf } from "sprintf-js"
 
 export class Globe extends React.Component {
   componentDidMount() {
-    let rect = document
-      .getElementById("worldwind-canvas")
-      .getBoundingClientRect()
-
     let wwd = new WWObject.WorldWindow("worldwind-canvas")
 
     wwd.addLayer(new WWObject.BMNGOneImageLayer())
@@ -30,6 +26,10 @@ export class Globe extends React.Component {
       }
 
       set({error: false})
+
+      let rect = document
+        .getElementById("worldwind-canvas")
+        .getBoundingClientRect()
 
       let p1 = wwd.pick([0, 35]).objects[0].position
       let p2 = wwd.pick([rect.width - 10, rect.height - 10]).objects[0].position
