@@ -46,9 +46,9 @@ def get_forest_cover():
     bbox = request.args.get('bbox', '')
     coords = list(map(float, bbox.split(",")))
 
-    lat1, lon1 = coords[0] * math.pi / 180, coords[1] * math.pi / 180
-    lat2, lon2 = coords[2] , coords[3]
-
+    lat1, lat2 = coords[0] * math.pi / 180, coords[2] * math.pi / 180
+    lon1, lon2 = coords[1] , coords[3]
+    
     area = (math.pi/180) * R * R * abs(math.sin(lat1) - math.sin(lat2)) * abs(lon1 - lon2)
 
     if area < 1:
