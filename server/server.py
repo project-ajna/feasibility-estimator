@@ -6,8 +6,8 @@ import cv2
 import requests
 from flask import Flask, request
 
-MOCK = False
-SAVEIMG = True
+MOCK = True if os.environ.get('MOCK', '') else False
+SAVEIMG = True if os.environ.get('SAVEIMG', '') else False
 
 def forest_cover(fname):
     return forest_cover_img(cv2.imread(fname))
